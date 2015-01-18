@@ -15,6 +15,9 @@
 		61F70C351A6A311C00780FE1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 61F70C341A6A311C00780FE1 /* Images.xcassets */; };
 		61F70C381A6A311C00780FE1 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61F70C361A6A311C00780FE1 /* LaunchScreen.xib */; };
 		61F70C441A6A311C00780FE1 /* GuardianTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 61F70C431A6A311C00780FE1 /* GuardianTests.m */; };
+		61F70C521A6B47F600780FE1 /* GuardianAFSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 61F70C511A6B47F600780FE1 /* GuardianAFSessionManager.m */; };
+		61F70C551A6B843B00780FE1 /* GuardianController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61F70C541A6B843B00780FE1 /* GuardianController.m */; };
+		ED190BE9EE710A18F38AC7B1 /* libPods-Guardian.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 64405AB2FDF3248EE82D76A0 /* libPods-Guardian.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +46,13 @@
 		61F70C3D1A6A311C00780FE1 /* GuardianTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GuardianTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		61F70C421A6A311C00780FE1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		61F70C431A6A311C00780FE1 /* GuardianTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GuardianTests.m; sourceTree = "<group>"; };
+		61F70C501A6B47F600780FE1 /* GuardianAFSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuardianAFSessionManager.h; sourceTree = "<group>"; };
+		61F70C511A6B47F600780FE1 /* GuardianAFSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuardianAFSessionManager.m; sourceTree = "<group>"; };
+		61F70C531A6B843B00780FE1 /* GuardianController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuardianController.h; sourceTree = "<group>"; };
+		61F70C541A6B843B00780FE1 /* GuardianController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuardianController.m; sourceTree = "<group>"; };
+		64405AB2FDF3248EE82D76A0 /* libPods-Guardian.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Guardian.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8898B8E897F07674D003E699 /* Pods-Guardian.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Guardian.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Guardian/Pods-Guardian.debug.xcconfig"; sourceTree = "<group>"; };
+		EABD6EDF98B3CACAD95EC331 /* Pods-Guardian.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Guardian.release.xcconfig"; path = "Pods/Target Support Files/Pods-Guardian/Pods-Guardian.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,6 +60,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED190BE9EE710A18F38AC7B1 /* libPods-Guardian.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -69,6 +80,8 @@
 				61F70C231A6A311C00780FE1 /* Guardian */,
 				61F70C401A6A311C00780FE1 /* GuardianTests */,
 				61F70C221A6A311C00780FE1 /* Products */,
+				C436A37B72BEEAB692A13B04 /* Pods */,
+				FAFB0E64588EE2445112AC0E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -86,6 +99,10 @@
 			children = (
 				61F70C281A6A311C00780FE1 /* AppDelegate.h */,
 				61F70C291A6A311C00780FE1 /* AppDelegate.m */,
+				61F70C501A6B47F600780FE1 /* GuardianAFSessionManager.h */,
+				61F70C511A6B47F600780FE1 /* GuardianAFSessionManager.m */,
+				61F70C531A6B843B00780FE1 /* GuardianController.h */,
+				61F70C541A6B843B00780FE1 /* GuardianController.m */,
 				61F70C2B1A6A311C00780FE1 /* MasterViewController.h */,
 				61F70C2C1A6A311C00780FE1 /* MasterViewController.m */,
 				61F70C2E1A6A311C00780FE1 /* DetailViewController.h */,
@@ -124,6 +141,23 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		C436A37B72BEEAB692A13B04 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8898B8E897F07674D003E699 /* Pods-Guardian.debug.xcconfig */,
+				EABD6EDF98B3CACAD95EC331 /* Pods-Guardian.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		FAFB0E64588EE2445112AC0E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				64405AB2FDF3248EE82D76A0 /* libPods-Guardian.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -131,9 +165,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 61F70C471A6A311C00780FE1 /* Build configuration list for PBXNativeTarget "Guardian" */;
 			buildPhases = (
+				F309454D09AB0505F6EB0ED7 /* Check Pods Manifest.lock */,
 				61F70C1D1A6A311C00780FE1 /* Sources */,
 				61F70C1E1A6A311C00780FE1 /* Frameworks */,
 				61F70C1F1A6A311C00780FE1 /* Resources */,
+				2AADE87CD6F6B54F133A3E4E /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -219,6 +255,39 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		2AADE87CD6F6B54F133A3E4E /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Guardian/Pods-Guardian-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F309454D09AB0505F6EB0ED7 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		61F70C1D1A6A311C00780FE1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -226,8 +295,10 @@
 			files = (
 				61F70C2A1A6A311C00780FE1 /* AppDelegate.m in Sources */,
 				61F70C2D1A6A311C00780FE1 /* MasterViewController.m in Sources */,
+				61F70C551A6B843B00780FE1 /* GuardianController.m in Sources */,
 				61F70C271A6A311C00780FE1 /* main.m in Sources */,
 				61F70C301A6A311C00780FE1 /* DetailViewController.m in Sources */,
+				61F70C521A6B47F600780FE1 /* GuardianAFSessionManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -347,6 +418,7 @@
 		};
 		61F70C481A6A311C00780FE1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8898B8E897F07674D003E699 /* Pods-Guardian.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Guardian/Info.plist;
@@ -357,6 +429,7 @@
 		};
 		61F70C491A6A311C00780FE1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EABD6EDF98B3CACAD95EC331 /* Pods-Guardian.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Guardian/Info.plist;
@@ -418,6 +491,7 @@
 				61F70C491A6A311C00780FE1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		61F70C4A1A6A311C00780FE1 /* Build configuration list for PBXNativeTarget "GuardianTests" */ = {
 			isa = XCConfigurationList;
@@ -426,6 +500,7 @@
 				61F70C4C1A6A311C00780FE1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

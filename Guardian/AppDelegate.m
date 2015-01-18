@@ -8,17 +8,27 @@
 
 #import "AppDelegate.h"
 #import "DetailViewController.h"
+#import <SDWebImage/SDImageCache.h>
+#import "AFNetworkActivityIndicatorManager.h"
 
-@interface AppDelegate ()
 
-@end
 
 @implementation AppDelegate
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    int cacheSizeMemory = 10 * 1024 * 1024;
+    int cacheSizeDisk = 100 * 1024 * 1024;
+    NSURLCache *sharedCache = [[NSURLCache alloc] initWithMemoryCapacity:cacheSizeMemory
+                                                            diskCapacity:cacheSizeDisk diskPath:@"guardianCache"];
+    
+    [NSURLCache setSharedURLCache:sharedCache];
+    
+    NSString *bundledPath = [[[NSBundle mainBundle] resourcePath] stringByAppendingString:@"ArticleThumbnails"];
+    [[SDImageCache sharedImageCache] addReadOnlyCachePath:bundledPath];
+    [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
     return YES;
+
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
@@ -41,6 +51,11 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+-(void)applicationDidReceiveMemoryWarning:(UIApplication *)application
+{
+    [[NSURLCache sharedURLCache] removeAllCachedResponses];
 }
 
 @end
