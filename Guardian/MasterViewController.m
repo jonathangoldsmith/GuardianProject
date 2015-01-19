@@ -9,13 +9,19 @@
 #import "MasterViewController.h"
 #import "DetailViewController.h"
 #import "AFNetworking.h"
+#import "ArticleModel.h"
+#import "ArticleSummaryTableViewCell.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
-static NSString * const BaseURLString = @"http://content.guardianapis.com/search?api-key=nv33sgmbc36mk7xj4eftrajx";
+
+static NSString * const URLString = @"http://content.guardianapis.com/search?api-key=nv33sgmbc36mk7xj4eftrajx&show-fields=all";
 
 @interface MasterViewController ()
 
 //@property NSMutableArray *objects;
 @property(strong, nonatomic) NSArray *articles;
+@property(strong, nonatomic) NSMutableArray *articleArray;
+
 
 @end
 
@@ -28,7 +34,7 @@ static NSString * const BaseURLString = @"http://content.guardianapis.com/search
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    NSURL *url = [NSURL URLWithString:BaseURLString];
+    NSURL *url = [NSURL URLWithString:URLString];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
@@ -36,11 +42,16 @@ static NSString * const BaseURLString = @"http://content.guardianapis.com/search
     
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSDictionary * response = [[NSDictionary alloc] initWithDictionary:[(NSDictionary *)responseObject objectForKey:@"response"]];
-        //NSDictionary * responseDict = [responseObject objectForKey:@"response"];
         if(!self.articles) {
             self.articles = [[NSArray alloc] initWithArray:[response objectForKey:@"results"]];
         }
-        self.title = @"JSON Retrieved";
+        self.articleArray = [[NSMutableArray alloc] init];
+        for (NSDictionary *articleObj in self.articles)
+        {
+            ArticleModel *article = [[ArticleModel alloc] initWithDictionary:articleObj];
+            [self.articleArray addObject:article];
+        }
+        self.title = @"Guardian";
         [self.tableView reloadData];
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -54,6 +65,7 @@ static NSString * const BaseURLString = @"http://content.guardianapis.com/search
     }];
     
     [operation start];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -83,16 +95,23 @@ static NSString * const BaseURLString = @"http://content.guardianapis.com/search
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-
-    NSDictionary *articleDictionary = [[NSDictionary alloc] initWithDictionary:[self.articles objectAtIndex:indexPath.row]];
-    cell.textLabel.text = [articleDictionary objectForKey:@"webTitle"];
-    return cell;
+    [tableView registerNib:[UINib nibWithNibName:@"ArticleSummaryTableViewCell" bundle:nil] forCellReuseIdentifier:@"myCell"];
+    ArticleSummaryTableViewCell *articleCell = [tableView dequeueReusableCellWithIdentifier:@"myCell" forIndexPath:indexPath];
+    return articleCell;
 }
 
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return NO;
+- (void)tableView:(UITableView *)tableView willDisplayCell:(ArticleSummaryTableViewCell *)articleCell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    ArticleModel *article = [self.articleArray objectAtIndex:indexPath.row];
+    articleCell.titleText.text = @"";
+    articleCell.titleText.text = article.webTitle;
+    articleCell.dateText.text = article.webPublicationDateAsString;
+    articleCell.trailText.text = article.trailText;
+    [articleCell.thumbnail sd_setImageWithURL:[NSURL URLWithString:article.thumbnail]
+                   placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 120;
 }
 
 @end
