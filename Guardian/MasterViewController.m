@@ -13,13 +13,15 @@
 #import "ArticleSummaryTableViewCell.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "SCNetworkReachability.h"
+#import <sys/socket.h>
+#import <netinet/in.h>
+#import <SystemConfiguration/SystemConfiguration.h>
 
 
 static NSString * const URLString = @"http://content.guardianapis.com/search?api-key=nv33sgmbc36mk7xj4eftrajx&show-fields=all";
 
 @interface MasterViewController ()
 
-//@property NSMutableArray *objects;
 @property(strong, nonatomic) NSArray *articles;
 @property(strong, nonatomic) NSMutableArray *articleArray;
 
@@ -37,7 +39,15 @@ static NSString * const URLString = @"http://content.guardianapis.com/search?api
     
     NSURL *url = [NSURL URLWithString:URLString];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
-    [self TestReachability];
+    if([self hasConnectivity] == NO) {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error Retrieving Stream"
+                                                            message:@"You do not have an internet connection"
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"Ok"
+                                                  otherButtonTitles:nil];
+        [alertView show];
+    } else {
+    
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
     operation.responseSerializer = [AFJSONResponseSerializer serializer];
     
@@ -56,7 +66,7 @@ static NSString * const URLString = @"http://content.guardianapis.com/search?api
         [self.tableView reloadData];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error Retrieving stream"
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error Retrieving Stream"
                                                             message:[error localizedDescription]
                                                            delegate:nil
                                                   cancelButtonTitle:@"Ok"
@@ -65,14 +75,8 @@ static NSString * const URLString = @"http://content.guardianapis.com/search?api
     }];
     
     [operation start];
-    
+    }
 }
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 
 #pragma mark - Segues
 
@@ -120,25 +124,54 @@ static NSString * const URLString = @"http://content.guardianapis.com/search?api
     [self performSegueWithIdentifier:@"showDetail" sender:self.view];
 }
 
--(void)TestReachability {
-    SCNetworkReachability *reachability = [[SCNetworkReachability alloc] initWithHost:@"http://content.guardianapis.com"];
-    [reachability reachabilityStatus:^(SCNetworkStatus status)
-    {
-        switch (status)
-        {
-            case SCNetworkStatusReachableViaWiFi:
-                NSLog(@"Reachable via WiFi");
-                break;
+-(BOOL)hasConnectivity {
+    struct sockaddr_in zeroAddress;
+    bzero(&zeroAddress, sizeof(zeroAddress));
+    zeroAddress.sin_len = sizeof(zeroAddress);
+    zeroAddress.sin_family = AF_INET;
+    
+    SCNetworkReachabilityRef reachability = SCNetworkReachabilityCreateWithAddress(kCFAllocatorDefault, (const struct sockaddr*)&zeroAddress);
+    if(reachability != NULL) {
+        //NetworkStatus retVal = NotReachable;
+        SCNetworkReachabilityFlags flags;
+        if (SCNetworkReachabilityGetFlags(reachability, &flags)) {
+            if ((flags & kSCNetworkReachabilityFlagsReachable) == 0)
+            {
+                // if target host is not reachable
+                return NO;
+            }
+            
+            if ((flags & kSCNetworkReachabilityFlagsConnectionRequired) == 0)
+            {
+                // if target host is reachable and no connection is required
+                //  then we'll assume (for now) that your on Wi-Fi
+                return YES;
+            }
+            
+            
+            if ((((flags & kSCNetworkReachabilityFlagsConnectionOnDemand ) != 0) ||
+                 (flags & kSCNetworkReachabilityFlagsConnectionOnTraffic) != 0))
+            {
+                // ... and the connection is on-demand (or on-traffic) if the
+                //     calling application is using the CFSocketStream or higher APIs
                 
-            case SCNetworkStatusReachableViaCellular:
-                NSLog(@"Reachable via Cellular");
-                break;
-                
-            case SCNetworkStatusNotReachable:
-                NSLog(@"Not Reachable");
-                break;
+                if ((flags & kSCNetworkReachabilityFlagsInterventionRequired) == 0)
+                {
+                    // ... and no [user] intervention is needed
+                    return YES;
+                }
+            }
+            
+            if ((flags & kSCNetworkReachabilityFlagsIsWWAN) == kSCNetworkReachabilityFlagsIsWWAN)
+            {
+                // ... but WWAN connections are OK if the calling application
+                //     is using the CFNetwork (CFSocketStream?) APIs.
+                return YES;
+            }
         }
-    }];
+    }
+    
+    return NO;
 }
 
 @end

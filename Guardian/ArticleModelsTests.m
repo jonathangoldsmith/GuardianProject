@@ -8,33 +8,56 @@
 
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
+#import "ArticleModel.h"
 
 @interface ArticleModelsTests : XCTestCase
+
+@property (strong, nonatomic) ArticleModel *article;
 
 @end
 
 @implementation ArticleModelsTests
 
-- (void)setUp {
+- (void)setUp
+{
     [super setUp];
-    // Put setup code here. This method is called before the invocation of each test method in the class.
+    self.article = [[ArticleModel alloc] init];
+    self.article.webURLAsString = @"testURL";
+    self.article.thumbnail = @"testText";
+    self.article.trailText = @"testTrail";
+    self.article.webTitle = @"testTitle";
+
+    
 }
 
-- (void)tearDown {
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
+- (void)tearDown
+{
+    self.article = nil;
     [super tearDown];
 }
 
-- (void)testExample {
-    // This is an example of a functional test case.
-    XCTAssert(YES, @"Pass");
+- (void)testProductarticleNil
+{
+    XCTAssertNotNil(self.article, @"article should not be nil");
+    XCTAssertNotNil(self.article.webURLAsString, @"webURLAsString should not be nil");
+    XCTAssertNotNil(self.article.trailText, @"trailText should not be nil");
+    XCTAssertNotNil(self.article.thumbnail, @"thumbnail should not be nil");
+    XCTAssertNotNil(self.article.webTitle, @"webTitle should not be nil");
+
+    
 }
 
-- (void)testPerformanceExample {
-    // This is an example of a performance test case.
-    [self measureBlock:^{
-        // Put the code you want to measure the time of here.
-    }];
+- (void)testProductarticleValues
+{
+
+    XCTAssertEqualObjects(self.article.webURLAsString,
+                          @"testURL", @"expected: %@, got%@", @"testURL", self.article.webURLAsString);
+    XCTAssertEqualObjects(self.article.thumbnail,
+                          @"testText", @"expected: %@, got%@", @"testText", self.article.thumbnail);
+    XCTAssertEqualObjects(self.article.trailText,
+                          @"testTrail", @"expected: %@, got%@", @"testTrail", self.article.trailText);
+    XCTAssertEqualObjects(self.article.webTitle,
+                          @"testTitle", @"expected: %@, got%@", @"testTitle", self.article.webTitle);
 }
 
 @end
