@@ -12,6 +12,7 @@
 #import "ArticleModel.h"
 #import "ArticleSummaryTableViewCell.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import "SCNetworkReachability.h"
 
 
 static NSString * const URLString = @"http://content.guardianapis.com/search?api-key=nv33sgmbc36mk7xj4eftrajx&show-fields=all";
@@ -36,7 +37,7 @@ static NSString * const URLString = @"http://content.guardianapis.com/search?api
     
     NSURL *url = [NSURL URLWithString:URLString];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
-    
+    [self TestReachability];
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
     operation.responseSerializer = [AFJSONResponseSerializer serializer];
     
@@ -53,10 +54,9 @@ static NSString * const URLString = @"http://content.guardianapis.com/search?api
         }
         self.title = @"Guardian";
         [self.tableView reloadData];
-        
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error Retrieving Weather"
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error Retrieving stream"
                                                             message:[error localizedDescription]
                                                            delegate:nil
                                                   cancelButtonTitle:@"Ok"
@@ -78,9 +78,10 @@ static NSString * const URLString = @"http://content.guardianapis.com/search?api
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([[segue identifier] isEqualToString:@"showDetail"]) {
-        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        //NSDate *object = self.objects[indexPath.row];
-        //[[segue destinationViewController] setDetailItem:object];
+        UITableViewCell *cell = (UITableViewCell *)sender;
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+        DetailViewController *dvc = (DetailViewController *)segue.destinationViewController;
+        dvc.article = [self.articleArray objectAtIndex:indexPath.row];
     }
 }
 
@@ -111,7 +112,33 @@ static NSString * const URLString = @"http://content.guardianapis.com/search?api
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 120;
+    return 115;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [self performSegueWithIdentifier:@"showDetail" sender:self.view];
+}
+
+-(void)TestReachability {
+    SCNetworkReachability *reachability = [[SCNetworkReachability alloc] initWithHost:@"http://content.guardianapis.com"];
+    [reachability reachabilityStatus:^(SCNetworkStatus status)
+    {
+        switch (status)
+        {
+            case SCNetworkStatusReachableViaWiFi:
+                NSLog(@"Reachable via WiFi");
+                break;
+                
+            case SCNetworkStatusReachableViaCellular:
+                NSLog(@"Reachable via Cellular");
+                break;
+                
+            case SCNetworkStatusNotReachable:
+                NSLog(@"Not Reachable");
+                break;
+        }
+    }];
 }
 
 @end

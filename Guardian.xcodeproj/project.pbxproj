@@ -16,11 +16,11 @@
 		61F70C381A6A311C00780FE1 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61F70C361A6A311C00780FE1 /* LaunchScreen.xib */; };
 		61F70C441A6A311C00780FE1 /* GuardianTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 61F70C431A6A311C00780FE1 /* GuardianTests.m */; };
 		61F70C521A6B47F600780FE1 /* GuardianAFSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 61F70C511A6B47F600780FE1 /* GuardianAFSessionManager.m */; };
-		61F70C551A6B843B00780FE1 /* GuardianController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61F70C541A6B843B00780FE1 /* GuardianController.m */; };
 		61F70C591A6BA8F200780FE1 /* ArticleSummaryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 61F70C571A6BA8F200780FE1 /* ArticleSummaryTableViewCell.m */; };
 		61F70C5A1A6BA8F200780FE1 /* ArticleSummaryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61F70C581A6BA8F200780FE1 /* ArticleSummaryTableViewCell.xib */; };
 		61F70C5D1A6BAA4500780FE1 /* ArticleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 61F70C5C1A6BAA4500780FE1 /* ArticleModel.m */; };
-		61F70C601A6D121700780FE1 /* ArticleSummaryTableViewCellManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 61F70C5F1A6D121700780FE1 /* ArticleSummaryTableViewCellManager.m */; };
+		61F70C621A6D6DD900780FE1 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61F70C611A6D6DD900780FE1 /* SystemConfiguration.framework */; };
+		61F70C641A6D70DC00780FE1 /* ArticleModelsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 61F70C631A6D70DC00780FE1 /* ArticleModelsTests.m */; };
 		ED190BE9EE710A18F38AC7B1 /* libPods-Guardian.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 64405AB2FDF3248EE82D76A0 /* libPods-Guardian.a */; };
 /* End PBXBuildFile section */
 
@@ -52,15 +52,13 @@
 		61F70C431A6A311C00780FE1 /* GuardianTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GuardianTests.m; sourceTree = "<group>"; };
 		61F70C501A6B47F600780FE1 /* GuardianAFSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuardianAFSessionManager.h; sourceTree = "<group>"; };
 		61F70C511A6B47F600780FE1 /* GuardianAFSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuardianAFSessionManager.m; sourceTree = "<group>"; };
-		61F70C531A6B843B00780FE1 /* GuardianController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuardianController.h; sourceTree = "<group>"; };
-		61F70C541A6B843B00780FE1 /* GuardianController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuardianController.m; sourceTree = "<group>"; };
 		61F70C561A6BA8F200780FE1 /* ArticleSummaryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleSummaryTableViewCell.h; sourceTree = "<group>"; };
 		61F70C571A6BA8F200780FE1 /* ArticleSummaryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleSummaryTableViewCell.m; sourceTree = "<group>"; };
 		61F70C581A6BA8F200780FE1 /* ArticleSummaryTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ArticleSummaryTableViewCell.xib; sourceTree = "<group>"; };
 		61F70C5B1A6BAA4500780FE1 /* ArticleModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleModel.h; sourceTree = "<group>"; };
 		61F70C5C1A6BAA4500780FE1 /* ArticleModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleModel.m; sourceTree = "<group>"; };
-		61F70C5E1A6D121700780FE1 /* ArticleSummaryTableViewCellManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleSummaryTableViewCellManager.h; sourceTree = "<group>"; };
-		61F70C5F1A6D121700780FE1 /* ArticleSummaryTableViewCellManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleSummaryTableViewCellManager.m; sourceTree = "<group>"; };
+		61F70C611A6D6DD900780FE1 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		61F70C631A6D70DC00780FE1 /* ArticleModelsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ArticleModelsTests.m; path = ../Guardian/ArticleModelsTests.m; sourceTree = "<group>"; };
 		64405AB2FDF3248EE82D76A0 /* libPods-Guardian.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Guardian.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8898B8E897F07674D003E699 /* Pods-Guardian.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Guardian.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Guardian/Pods-Guardian.debug.xcconfig"; sourceTree = "<group>"; };
 		EABD6EDF98B3CACAD95EC331 /* Pods-Guardian.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Guardian.release.xcconfig"; path = "Pods/Target Support Files/Pods-Guardian/Pods-Guardian.release.xcconfig"; sourceTree = "<group>"; };
@@ -71,6 +69,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				61F70C621A6D6DD900780FE1 /* SystemConfiguration.framework in Frameworks */,
 				ED190BE9EE710A18F38AC7B1 /* libPods-Guardian.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -112,8 +111,6 @@
 				61F70C291A6A311C00780FE1 /* AppDelegate.m */,
 				61F70C501A6B47F600780FE1 /* GuardianAFSessionManager.h */,
 				61F70C511A6B47F600780FE1 /* GuardianAFSessionManager.m */,
-				61F70C531A6B843B00780FE1 /* GuardianController.h */,
-				61F70C541A6B843B00780FE1 /* GuardianController.m */,
 				61F70C2B1A6A311C00780FE1 /* MasterViewController.h */,
 				61F70C2C1A6A311C00780FE1 /* MasterViewController.m */,
 				61F70C2E1A6A311C00780FE1 /* DetailViewController.h */,
@@ -124,8 +121,6 @@
 				61F70C561A6BA8F200780FE1 /* ArticleSummaryTableViewCell.h */,
 				61F70C571A6BA8F200780FE1 /* ArticleSummaryTableViewCell.m */,
 				61F70C581A6BA8F200780FE1 /* ArticleSummaryTableViewCell.xib */,
-				61F70C5E1A6D121700780FE1 /* ArticleSummaryTableViewCellManager.h */,
-				61F70C5F1A6D121700780FE1 /* ArticleSummaryTableViewCellManager.m */,
 				61F70C5B1A6BAA4500780FE1 /* ArticleModel.h */,
 				61F70C5C1A6BAA4500780FE1 /* ArticleModel.m */,
 				61F70C241A6A311C00780FE1 /* Supporting Files */,
@@ -145,6 +140,7 @@
 		61F70C401A6A311C00780FE1 /* GuardianTests */ = {
 			isa = PBXGroup;
 			children = (
+				61F70C631A6D70DC00780FE1 /* ArticleModelsTests.m */,
 				61F70C431A6A311C00780FE1 /* GuardianTests.m */,
 				61F70C411A6A311C00780FE1 /* Supporting Files */,
 			);
@@ -171,6 +167,7 @@
 		FAFB0E64588EE2445112AC0E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				61F70C611A6D6DD900780FE1 /* SystemConfiguration.framework */,
 				64405AB2FDF3248EE82D76A0 /* libPods-Guardian.a */,
 			);
 			name = Frameworks;
@@ -315,12 +312,10 @@
 				61F70C2A1A6A311C00780FE1 /* AppDelegate.m in Sources */,
 				61F70C2D1A6A311C00780FE1 /* MasterViewController.m in Sources */,
 				61F70C591A6BA8F200780FE1 /* ArticleSummaryTableViewCell.m in Sources */,
-				61F70C551A6B843B00780FE1 /* GuardianController.m in Sources */,
 				61F70C271A6A311C00780FE1 /* main.m in Sources */,
 				61F70C301A6A311C00780FE1 /* DetailViewController.m in Sources */,
 				61F70C5D1A6BAA4500780FE1 /* ArticleModel.m in Sources */,
 				61F70C521A6B47F600780FE1 /* GuardianAFSessionManager.m in Sources */,
-				61F70C601A6D121700780FE1 /* ArticleSummaryTableViewCellManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -328,6 +323,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				61F70C641A6D70DC00780FE1 /* ArticleModelsTests.m in Sources */,
 				61F70C441A6A311C00780FE1 /* GuardianTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

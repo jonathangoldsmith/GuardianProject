@@ -20,8 +20,8 @@
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xCz-Zv-a5f">
-                        <rect key="frame" x="8" y="8" width="70" height="70"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xCz-Zv-a5f">
+                        <rect key="frame" x="8" y="8" width="70" height="79"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="70" id="A6Q-4x-mlM"/>
                             <constraint firstAttribute="height" constant="70" id="qzL-FU-DmA"/>

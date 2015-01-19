@@ -54,6 +54,18 @@
 #define COCOAPODS_VERSION_MINOR_MBProgressHUD 9
 #define COCOAPODS_VERSION_PATCH_MBProgressHUD 0
 
+// SCNetworkReachability
+#define COCOAPODS_POD_AVAILABLE_SCNetworkReachability
+#define COCOAPODS_VERSION_MAJOR_SCNetworkReachability 2
+#define COCOAPODS_VERSION_MINOR_SCNetworkReachability 0
+#define COCOAPODS_VERSION_PATCH_SCNetworkReachability 2
+
+// SCNetworkReachability/Core
+#define COCOAPODS_POD_AVAILABLE_SCNetworkReachability_Core
+#define COCOAPODS_VERSION_MAJOR_SCNetworkReachability_Core 2
+#define COCOAPODS_VERSION_MINOR_SCNetworkReachability_Core 0
+#define COCOAPODS_VERSION_PATCH_SCNetworkReachability_Core 2
+
 // SDWebImage
 #define COCOAPODS_POD_AVAILABLE_SDWebImage
 #define COCOAPODS_VERSION_MAJOR_SDWebImage 3
@@ -65,4 +77,10 @@
 #define COCOAPODS_VERSION_MAJOR_SDWebImage_Core 3
 #define COCOAPODS_VERSION_MINOR_SDWebImage_Core 7
 #define COCOAPODS_VERSION_PATCH_SDWebImage_Core 1
+
+// macros_blocks
+#define COCOAPODS_POD_AVAILABLE_macros_blocks
+#define COCOAPODS_VERSION_MAJOR_macros_blocks 0
+#define COCOAPODS_VERSION_MINOR_macros_blocks 0
+#define COCOAPODS_VERSION_PATCH_macros_blocks 1
 

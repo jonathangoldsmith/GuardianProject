@@ -6,6 +6,7 @@ target 'Guardian' do
 pod 'AFNetworking', '2.2.1'
 pod 'SDWebImage', '~>3.6'
 pod 'MBProgressHUD', '~> 0.8'
+pod 'SCNetworkReachability'
 
 end
 

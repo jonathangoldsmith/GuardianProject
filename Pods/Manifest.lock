@@ -18,7 +18,12 @@ PODS:
   - AFNetworking/UIKit (2.2.1):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - macros_blocks (0.0.1)
   - MBProgressHUD (0.9)
+  - SCNetworkReachability (2.0.2):
+    - SCNetworkReachability/Core (= 2.0.2)
+  - SCNetworkReachability/Core (2.0.2):
+    - macros_blocks (= 0.0.1)
   - SDWebImage (3.7.1):
     - SDWebImage/Core (= 3.7.1)
   - SDWebImage/Core (3.7.1)
@@ -26,11 +31,14 @@ PODS:
 DEPENDENCIES:
   - AFNetworking (= 2.2.1)
   - MBProgressHUD (~> 0.8)
+  - SCNetworkReachability
   - SDWebImage (~> 3.6)
 
 SPEC CHECKSUMS:
   AFNetworking: 8dde8c8a6597ad95dac332a593c27e541bc87371
+  macros_blocks: 5d2cb43d020128f7881def9855886e97af062764
   MBProgressHUD: 2038dbcf3dce73215abed6001657043d53aa79a8
+  SCNetworkReachability: c46a79edd3f8382a499ebdc8d523d800dea6f85a
   SDWebImage: 116e88633b5b416ea0ca4b334a4ac59cf72dd38d
 
 COCOAPODS: 0.35.0

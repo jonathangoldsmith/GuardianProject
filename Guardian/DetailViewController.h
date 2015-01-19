@@ -7,11 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ArticleModel.h"
 
-@interface DetailViewController : UIViewController
+@interface DetailViewController : UIViewController <UIWebViewDelegate>
+@property (weak, nonatomic) IBOutlet UIWebView *webView;
 
-@property (strong, nonatomic) id detailItem;
-@property (weak, nonatomic) IBOutlet UILabel *detailDescriptionLabel;
+@property (strong, nonatomic) ArticleModel* article;
 
 @end
 

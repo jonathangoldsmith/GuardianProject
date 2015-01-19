@@ -20,7 +20,6 @@
 
 @property (strong, nonatomic) NSString *webPublicanDateAsStringForPresentation;
 @property (strong, nonatomic) NSURL *webURL;
-@property (strong, nonatomic) NSURL *apiURL;
 
 -(id)initWithWebURLAsString:(NSString *)webURLAsString
               webTitle:(NSString *)webTitle

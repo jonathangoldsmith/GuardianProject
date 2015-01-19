@@ -16,6 +16,4 @@
 @property (weak, nonatomic) IBOutlet UILabel *trailText;
 @property (weak, nonatomic) IBOutlet UILabel *dateText;
 
-- (void)updateDescriptionText:(NSDictionary *)article;
-
 @end

@@ -18,21 +18,9 @@
     self.dateText.font = [UIFont fontWithName:@"Verdana" size:7.0f];
     self.trailText.font = [UIFont fontWithName:@"Verdana" size:12.0f];
     self.trailText.numberOfLines = 3;
+    self.userInteractionEnabled = YES;
     [self.titleText setNeedsUpdateConstraints];
     
-}
-
-- (void)updateDescriptionText:(ArticleModel *)article {
-    self.titleText.text = article.webTitle;
-    self.dateText.text = article.webPublicationDateAsString;
-
-    self.trailText.text = article.trailText;
-   // self.thumbnail.image = article[@"webTitl;
-
-    [self setNeedsLayout];
-    [self layoutIfNeeded];
-    
-    CGSize size = [self.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
 }
 
 - (void)layoutSubviews {
